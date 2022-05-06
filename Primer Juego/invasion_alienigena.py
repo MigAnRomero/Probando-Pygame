@@ -11,6 +11,10 @@ def run_game():
     # Se digita el nombre del videojuego:
     pygame.display.set_caption("Invasión alienígena")
     
+    # Cambiar el color de fondo por defecto (negro) de la pantalla:
+    bg_color = (230, 230, 230) # Se utiliza los colores RGB
+
+
     # Bucle de activación del videojuego:
     while True:
         # El bucle gestiona los eventos y código que actualiza la pantalla
@@ -19,6 +23,9 @@ def run_game():
             if event.type == pygame.QUIT:
                 sys.exit()
 
+        # Volver a dibujar la pantalla durante cada pasada por el bucle
+        pantalla.fill(bg_color)
+        # Hacer visible la pantalla dibujada más reciente
         pygame.display.flip()
 
 run_game() # Comienza el videojuego
