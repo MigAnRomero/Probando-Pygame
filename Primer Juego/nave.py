@@ -9,8 +9,8 @@ class Nave():
         self.pantalla = pantalla
 
         # Carga la imagen de la nave y obtiene su rect
-        self.imagen = pygame.image.load("img/nave_uno.bmp")
-        self.rect = self.imagen.get_rect()
+        self.image = pygame.image.load("img/nave_uno.bmp")
+        self.rect = self.image.get_rect()
         self.pantalla_rect = pantalla.get_rect()
 
         # Empieza cada nueva nave en la parte inferior central de la pantalla
@@ -19,4 +19,4 @@ class Nave():
 
     def blitme(self):
         """Dibuja la nave en su ubicación actual"""
-        self.pantalla.blit(self.imagen, self.rect)
+        self.pantalla.blit(self.image, self.rect)
