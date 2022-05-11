@@ -5,6 +5,8 @@ import pygame
 
 from configuraciones import Configuraciones
 
+from nave import Nave
+
 def run_game():
     # Inicializar el juego, las configuraciones y crear un objeto pantalla
     pygame.init()
@@ -14,6 +16,9 @@ def run_game():
         (ai_configuraciones.screen_width, ai_configuraciones.screen_height))
     # Se digita el nombre del videojuego:
     pygame.display.set_caption("Invasión alienígena")
+
+    # Crea una nave
+    nave = Nave(pantalla)
 
     # Bucle de activación del videojuego:
     while True:
@@ -26,6 +31,8 @@ def run_game():
 
         # Volver a dibujar la pantalla durante cada pasada por el bucle
         pantalla.fill(ai_configuraciones.bgcolor)
+        nave.blitme()
+        
         # Hacer visible la pantalla dibujada más reciente
         pygame.display.flip()
 
