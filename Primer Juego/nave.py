@@ -9,7 +9,7 @@ class Nave():
         self.pantalla = pantalla
 
         # Carga la imagen de la nave y obtiene su rect
-        self.image = pygame.image.load("img/nave_uno.bmp")
+        self.image = pygame.image.load("Primer Juego/img/nave_uno.bmp") # Debo colocar toda la dirección completa para que funcione?
         self.rect = self.image.get_rect()
         self.pantalla_rect = pantalla.get_rect()
 
