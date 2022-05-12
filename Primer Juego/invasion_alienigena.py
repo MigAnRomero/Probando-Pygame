@@ -1,11 +1,11 @@
-import sys
-
 import pygame
 # Cada elemento del videojuego es una superficie. Ej: los enemigos, el jugador, entre otros.
 
 from configuraciones import Configuraciones
 
 from nave import Nave
+
+import funciones_juego as fj
 
 def run_game():
     # Inicializar el juego, las configuraciones y crear un objeto pantalla
@@ -23,11 +23,7 @@ def run_game():
     # Bucle de activación del videojuego:
     while True:
         # Escuchar eventos de teclado o de ratón
-        # El bucle gestiona los eventos y código que actualiza la pantalla
-        # Evento: acción que realiza un usuario mientras juega.
-        for event in pygame.event.get():
-            if event.type == pygame.QUIT:
-                sys.exit()
+        fj.verificar_eventos()
 
         # Volver a dibujar la pantalla durante cada pasada por el bucle
         pantalla.fill(ai_configuraciones.bgcolor)
