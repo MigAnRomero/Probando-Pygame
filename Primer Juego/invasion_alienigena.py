@@ -24,12 +24,6 @@ def run_game():
     while True:
         # Escuchar eventos de teclado o de ratón
         fj.verificar_eventos()
-
-        # Volver a dibujar la pantalla durante cada pasada por el bucle
-        pantalla.fill(ai_configuraciones.bgcolor)
-        nave.blitme()
-        
-        # Hacer visible la pantalla dibujada más reciente
-        pygame.display.flip()
+        fj.actualizar_pantalla(ai_configuraciones, pantalla, nave)
 
 run_game() # Comienza el videojuego

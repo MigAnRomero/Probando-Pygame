@@ -10,3 +10,12 @@ def verificar_eventos():
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             sys.exit()
+
+def actualizar_pantalla(ai_configuraciones, pantalla, nave):
+    """Actualiza las imágenes en la pantalla y pasa a la nueva pantalla"""
+    # Volver a dibujar la pantalla durante cada pasada por el bucle
+    pantalla.fill(ai_configuraciones.bgcolor)
+    nave.blitme()
+        
+    # Hacer visible la pantalla dibujada más reciente
+    pygame.display.flip()
