@@ -2,7 +2,7 @@ import sys
 
 import pygame
 
-def verificar_eventos():
+def verificar_eventos(nave):
     """Responde a las pulsaciones de teclas y los eventos del ratón"""
     # Escuchar eventos de teclado o de ratón
     # El bucle gestiona los eventos y código que actualiza la pantalla
@@ -10,6 +10,9 @@ def verificar_eventos():
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             sys.exit()
+        elif event.type == pygame.KEYDOWN:
+            if event.key == pygame.K_RIGHT:
+                nave.rect.centerx += 1
 
 def actualizar_pantalla(ai_configuraciones, pantalla, nave):
     """Actualiza las imágenes en la pantalla y pasa a la nueva pantalla"""

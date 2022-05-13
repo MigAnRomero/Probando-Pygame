@@ -23,7 +23,7 @@ def run_game():
     # Bucle de activación del videojuego:
     while True:
         # Escuchar eventos de teclado o de ratón
-        fj.verificar_eventos()
+        fj.verificar_eventos(nave)
         fj.actualizar_pantalla(ai_configuraciones, pantalla, nave)
 
 run_game() # Comienza el videojuego
