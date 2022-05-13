@@ -24,6 +24,7 @@ def run_game():
     while True:
         # Escuchar eventos de teclado o de ratón
         fj.verificar_eventos(nave)
+        nave.update() # La posición de la nave se actualiza en la pantalla usando las teclas
         fj.actualizar_pantalla(ai_configuraciones, pantalla, nave)
 
 run_game() # Comienza el videojuego
