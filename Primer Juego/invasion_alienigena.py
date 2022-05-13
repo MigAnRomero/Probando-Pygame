@@ -18,7 +18,7 @@ def run_game():
     pygame.display.set_caption("Invasión alienígena")
 
     # Crea una nave
-    nave = Nave(pantalla)
+    nave = Nave(ai_configuraciones, pantalla)
 
     # Bucle de activación del videojuego:
     while True:
