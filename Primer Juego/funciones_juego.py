@@ -13,9 +13,13 @@ def verificar_eventos(nave):
         elif event.type == pygame.KEYDOWN:
             if event.key == pygame.K_RIGHT:
                 nave.moving_right = True
+            elif event.key == pygame.K_LEFT:
+                nave.moving_left = True
         elif event.type == pygame.KEYUP:
             if event.key == pygame.K_RIGHT:
                 nave.moving_right = False
+            elif event.key == pygame.K_LEFT:
+                nave.moving_left = False
 
 def actualizar_pantalla(ai_configuraciones, pantalla, nave):
     """Actualiza las imágenes en la pantalla y pasa a la nueva pantalla"""
