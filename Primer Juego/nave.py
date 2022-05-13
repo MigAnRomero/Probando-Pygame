@@ -26,16 +26,17 @@ class Nave():
         self.moving_left = False
         
     def update(self):
-        """Actualiza la posición de la nave según la bandera de movimiento"""
+        """Actualiza la posición de la nave según las banderas de movimiento"""
         # Movimiento a la derecha
-        if self.moving_right:
+        if self.moving_right and self.rect.right < self.pantalla_rect.right:
             #self.rect.centerx += 1
             self.center += self.ai_configuraciones.factor_velocidad_nave
         # Movimiento a la izquierda
-        if self.moving_left:
+        if self.moving_left and self.rect.left > 0:
             #self.rect.centerx -= 1
             self.center -= self.ai_configuraciones.factor_velocidad_nave
 
+        # Actualiza el objeto rect desde self.center
         self.rect.centerx = self.center
         
     def blitme(self):
