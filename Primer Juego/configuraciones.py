@@ -9,3 +9,9 @@ class Configuraciones(object):
         
         # Configuraciones de la nave
         self.factor_velocidad_nave = 1.5
+        
+        # Configuraciones de balas
+        self.bala_factor_velocidad = 1
+        self.bala_width = 3
+        self.bala_height = 15
+        self.bala_color = 60, 60, 60 # Color en RGB
