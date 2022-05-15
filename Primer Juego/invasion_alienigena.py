@@ -1,10 +1,8 @@
 import pygame
 # Cada elemento del videojuego es una superficie. Ej: los enemigos, el jugador, entre otros.
-
+from pygame.sprite import Group
 from configuraciones import Configuraciones
-
 from nave import Nave
-
 import funciones_juego as fj
 
 def run_game():
@@ -19,12 +17,15 @@ def run_game():
 
     # Crea una nave
     nave = Nave(ai_configuraciones, pantalla)
-
+    # Crea un grupo para almacenar las balas
+    balas = Group()
+    
     # Bucle de activación del videojuego:
     while True:
         # Escuchar eventos de teclado o de ratón
-        fj.verificar_eventos(nave)
+        fj.verificar_eventos(ai_configuraciones, pantalla, nave, balas)
         nave.update() # La posición de la nave se actualiza en la pantalla usando las teclas
-        fj.actualizar_pantalla(ai_configuraciones, pantalla, nave)
+        balas.update()
+        fj.actualizar_pantalla(ai_configuraciones, pantalla, nave, balas)
 
 run_game() # Comienza el videojuego

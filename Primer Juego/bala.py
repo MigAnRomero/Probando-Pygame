@@ -20,7 +20,7 @@ class Bala(Sprite):
         # Se almacena el color de la bala digitado en "configuraciones.py"
         self.color = ai_configuraciones.bala_color
         # Se almacena la velocidad de la bala digitado en "configuraciones.py"
-        self.factor_velocidad = ai_configuraciones.bala_velocidad
+        self.factor_velocidad = ai_configuraciones.bala_factor_velocidad
         
     # El método update gestiona la posición de la bala
     # porque, cuando la bala se dispara, se mueve hacia arriba en la pantalla,
