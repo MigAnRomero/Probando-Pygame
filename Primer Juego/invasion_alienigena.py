@@ -23,7 +23,6 @@ def run_game():
     for bala in balas.copy():
         if bala.rect.bottom <= 0:
             balas.remove(bala)
-    print(len(balas))
     
     # Bucle de activación del videojuego:
     while True:
