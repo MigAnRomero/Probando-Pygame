@@ -19,6 +19,11 @@ def run_game():
     nave = Nave(ai_configuraciones, pantalla)
     # Crea un grupo para almacenar las balas
     balas = Group()
+    # Deshace las balas que han desaparecido
+    for bala in balas.copy():
+        if bala.rect.bottom <= 0:
+            balas.remove(bala)
+    print(len(balas))
     
     # Bucle de activación del videojuego:
     while True:
