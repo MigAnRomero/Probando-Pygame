@@ -15,3 +15,4 @@ class Configuraciones(object):
         self.bala_width = 3
         self.bala_height = 15
         self.bala_color = 60, 60, 60 # Color en RGB
+        self.balas_allowed = 3

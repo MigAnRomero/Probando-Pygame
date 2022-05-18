@@ -19,10 +19,6 @@ def run_game():
     nave = Nave(ai_configuraciones, pantalla)
     # Crea un grupo para almacenar las balas
     balas = Group()
-    # Deshace las balas que han desaparecido
-    for bala in balas.copy():
-        if bala.rect.bottom <= 0:
-            balas.remove(bala)
     
     # Bucle de activación del videojuego:
     while True:
@@ -30,6 +26,11 @@ def run_game():
         fj.verificar_eventos(ai_configuraciones, pantalla, nave, balas)
         nave.update() # La posición de la nave se actualiza en la pantalla usando las teclas
         balas.update()
+        # Deshace las balas que han desaparecido
+        for bala in balas.copy():
+            if bala.rect.bottom <= 0:
+                balas.remove(bala)
+        
         fj.actualizar_pantalla(ai_configuraciones, pantalla, nave, balas)
 
 run_game() # Comienza el videojuego
