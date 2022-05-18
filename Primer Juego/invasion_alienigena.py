@@ -25,12 +25,7 @@ def run_game():
         # Escuchar eventos de teclado o de ratón
         fj.verificar_eventos(ai_configuraciones, pantalla, nave, balas)
         nave.update() # La posición de la nave se actualiza en la pantalla usando las teclas
-        balas.update()
-        # Deshace las balas que han desaparecido
-        for bala in balas.copy():
-            if bala.rect.bottom <= 0:
-                balas.remove(bala)
-        
+        fj.update_balas(balas)
         fj.actualizar_pantalla(ai_configuraciones, pantalla, nave, balas)
 
 run_game() # Comienza el videojuego

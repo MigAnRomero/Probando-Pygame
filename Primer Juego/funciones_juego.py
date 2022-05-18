@@ -47,3 +47,12 @@ def actualizar_pantalla(ai_configuraciones, pantalla, nave, balas):
         
     # Hacer visible la pantalla dibujada más reciente
     pygame.display.flip()
+    
+def update_balas(balas):
+    """Actualiza la posición de las balas y elimina las antiguas"""
+    # Actualiza las posiciones de las balas
+    balas.update()
+    # Deshace las balas que han desaparecido
+    for bala in balas.copy():
+        if bala.rect.bottom <= 0:
+            balas.remove(bala)
