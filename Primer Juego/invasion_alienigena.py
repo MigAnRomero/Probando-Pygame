@@ -3,6 +3,7 @@ import pygame
 from pygame.sprite import Group
 from configuraciones import Configuraciones
 from nave import Nave
+from alien import Alien
 import funciones_juego as fj
 
 def run_game():
@@ -19,6 +20,8 @@ def run_game():
     nave = Nave(ai_configuraciones, pantalla)
     # Crea un grupo para almacenar las balas
     balas = Group()
+    # Crea un alien
+    alien = Alien(ai_configuraciones, pantalla)
     
     # Bucle de activación del videojuego:
     while True:
@@ -26,6 +29,6 @@ def run_game():
         fj.verificar_eventos(ai_configuraciones, pantalla, nave, balas)
         nave.update() # La posición de la nave se actualiza en la pantalla usando las teclas
         fj.update_balas(balas)
-        fj.actualizar_pantalla(ai_configuraciones, pantalla, nave, balas)
+        fj.actualizar_pantalla(ai_configuraciones, pantalla, nave, alien, balas)
 
 run_game() # Comienza el videojuego
