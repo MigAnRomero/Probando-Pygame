@@ -10,6 +10,8 @@ def verificar_eventos_keydown(event, ai_configuraciones, pantalla, nave, balas):
         nave.moving_left = True
     elif event.key == pygame.K_SPACE:
         fuego_bala(ai_configuraciones, pantalla, nave, balas)
+    elif event.key == pygame.K_q:
+        sys.exit() # La tecla "Q" cierra la pantalla del videojuego
 
 def verificar_eventos_keyup(event, nave):
     """Responde a las pulsaciones de teclas"""
