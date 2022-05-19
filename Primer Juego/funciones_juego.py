@@ -1,6 +1,7 @@
 import sys
 import pygame
 from bala import Bala
+from alien import Alien
 
 def verificar_eventos_keydown(event, ai_configuraciones, pantalla, nave, balas):
     """Responde a las pulsaciones de teclas"""
@@ -35,7 +36,7 @@ def verificar_eventos(ai_configuraciones, pantalla, nave, balas):
             verificar_eventos_keyup(event, nave)
             
 
-def actualizar_pantalla(ai_configuraciones, pantalla, nave, alien, balas):
+def actualizar_pantalla(ai_configuraciones, pantalla, nave, aliens, balas):
     """Actualiza las imágenes en la pantalla y pasa a la nueva pantalla"""
     # Volver a dibujar la pantalla durante cada pasada por el bucle
     pantalla.fill(ai_configuraciones.bgcolor)
@@ -43,7 +44,7 @@ def actualizar_pantalla(ai_configuraciones, pantalla, nave, alien, balas):
     for bala in balas.sprites():
         bala.draw_bala()
     nave.blitme()
-    alien.blitme()
+    aliens.draw(pantalla)
         
     # Hacer visible la pantalla dibujada más reciente
     pygame.display.flip()
@@ -63,3 +64,14 @@ def fuego_bala(ai_configuraciones, pantalla, nave, balas):
     if len(balas) < ai_configuraciones.balas_allowed:
         nueva_bala = Bala(ai_configuraciones, pantalla, nave)
         balas.add(nueva_bala)
+        
+def crear_flota(ai_configuraciones, pantalla, aliens):
+    """Crea una flota completa de alienígenas"""
+    # Crea un alien y encuentra el número de aliens seguidos
+    # El espacio entre cada alien es igual a un ancho del alien
+    alien = Alien(ai_configuraciones, pantalla)
+    alien_width = alien.rect.width
+    available_space_x = ai_configuraciones.screen_width - 2 * alien_width
+    number_aliens_x = int(available_space_x / (2 * alien_width))
+    
+    # Crea la primera fila de aliens
