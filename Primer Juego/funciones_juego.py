@@ -49,7 +49,7 @@ def actualizar_pantalla(ai_configuraciones, pantalla, nave, aliens, balas):
     # Hacer visible la pantalla dibujada más reciente
     pygame.display.flip()
     
-def update_balas(balas):
+def update_balas(aliens, balas):
     """Actualiza la posición de las balas y elimina las antiguas"""
     # Actualiza las posiciones de las balas
     balas.update()
@@ -57,6 +57,10 @@ def update_balas(balas):
     for bala in balas.copy():
         if bala.rect.bottom <= 0:
             balas.remove(bala)
+            
+    # Comprueba si hay balas que hayan alcanzado a los aliens
+    # Si es así, se desaparece la bala y el alien
+    collisions = pygame.sprite.groupcollide(balas, aliens, True, True)
             
 def fuego_bala(ai_configuraciones, pantalla, nave, balas):
     """Dispara una bala si aún no ha alcanzado el límite"""
