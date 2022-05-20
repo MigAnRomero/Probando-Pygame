@@ -16,3 +16,6 @@ class Configuraciones(object):
         self.bala_height = 15
         self.bala_color = 60, 60, 60 # Color en RGB
         self.balas_allowed = 3
+        
+        # Configuraciones de Alien
+        self.alien_speed_factor = 1

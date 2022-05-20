@@ -31,6 +31,8 @@ def run_game():
         fj.verificar_eventos(ai_configuraciones, pantalla, nave, balas)
         nave.update() # La posición de la nave se actualiza en la pantalla usando las teclas
         fj.update_balas(balas)
+        # Actualizar la posición de cada alien
+        fj.update_aliens(aliens)
         fj.actualizar_pantalla(ai_configuraciones, pantalla, nave, aliens, balas)
 
 run_game() # Comienza el videojuego
