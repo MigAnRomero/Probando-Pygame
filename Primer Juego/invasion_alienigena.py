@@ -23,7 +23,7 @@ def run_game():
     aliens = Group()
     
     # Crea la flota de alienógenas
-    fj.crear_flota(ai_configuraciones, pantalla, aliens)
+    fj.crear_flota(ai_configuraciones, pantalla, nave, aliens)
     
     # Bucle de activación del videojuego:
     while True:
