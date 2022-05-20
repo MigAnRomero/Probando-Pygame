@@ -71,7 +71,15 @@ def crear_flota(ai_configuraciones, pantalla, aliens):
     # El espacio entre cada alien es igual a un ancho del alien
     alien = Alien(ai_configuraciones, pantalla)
     alien_width = alien.rect.width
+    # Calcular el espacio horizontal disponible para los aliens
     available_space_x = ai_configuraciones.screen_width - 2 * alien_width
     number_aliens_x = int(available_space_x / (2 * alien_width))
     
     # Crea la primera fila de aliens
+    for alien_number in range(number_aliens_x):
+        # Crea un alien y lo coloca en la fila
+        alien = Alien(ai_configuraciones, pantalla)
+        # El alien se va creando hacia la derecha
+        alien.x = alien_width + 2 * alien_width * alien_number
+        alien.rect.x = alien.x
+        aliens.add(alien)
