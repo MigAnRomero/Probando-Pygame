@@ -30,7 +30,7 @@ def run_game():
         # Escuchar eventos de teclado o de ratón
         fj.verificar_eventos(ai_configuraciones, pantalla, nave, balas)
         nave.update() # La posición de la nave se actualiza en la pantalla usando las teclas
-        fj.update_balas(aliens, balas)
+        fj.update_balas(ai_configuraciones, pantalla, nave, aliens, balas)
         # Actualizar la posición de cada alien
         fj.update_aliens(ai_configuraciones, aliens)
         fj.actualizar_pantalla(ai_configuraciones, pantalla, nave, aliens, balas)
