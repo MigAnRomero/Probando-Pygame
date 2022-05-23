@@ -18,8 +18,8 @@ class Configuraciones(object):
         self.balas_allowed = 3
         
         # Configuraciones de Alien
-        self.alien_speed_factor = 0.3
-        self.fleet_drop_speed = 1
+        self.alien_speed_factor = 0.2
+        self.fleet_drop_speed = 0.7
         # fleet_direction, si es 1 representa a la derecha;
         # si es -1 representa a la derecha
         self.fleet_direction = 1
