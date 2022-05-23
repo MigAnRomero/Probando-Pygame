@@ -60,6 +60,11 @@ def update_balas(ai_configuraciones, pantalla, nave, aliens, balas):
             
     # Comprueba si hay balas que hayan alcanzado a los aliens
     # Si es así, se desaparece la bala y el alien
+    check_bala_collisions(ai_configuraciones, pantalla, nave, aliens, balas)
+        
+def check_bala_collisions(ai_configuraciones, pantalla, nave, aliens, balas):
+    """Responde a las colisiones entre balas y aliens"""
+    # Elimina las balas y los aliens que hayan chocado
     collisions = pygame.sprite.groupcollide(balas, aliens, True, True)
     if len(aliens) == 0:
         # Destruye las balas existentes y crea una nueva flota
