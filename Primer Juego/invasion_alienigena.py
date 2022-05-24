@@ -2,6 +2,7 @@ import pygame
 # Cada elemento del videojuego es una superficie. Ej: los enemigos, el jugador, entre otros.
 from pygame.sprite import Group
 from configuraciones import Configuraciones
+from estadisticas import Estadisticas
 from nave import Nave
 import funciones_juego as fj
 
@@ -14,6 +15,9 @@ def run_game():
         (ai_configuraciones.screen_width, ai_configuraciones.screen_height))
     # Se digita el nombre del videojuego:
     pygame.display.set_caption("Invasión alienígena")
+    
+    # Crea una instancia para almacenar estadñisticas del videojuego
+    estadisticas = Estadisticas(ai_configuraciones)
 
     # Crea una nave, un grupo de balas y un grupo de aliens
     nave = Nave(ai_configuraciones, pantalla)
@@ -32,7 +36,7 @@ def run_game():
         nave.update() # La posición de la nave se actualiza en la pantalla usando las teclas
         fj.update_balas(ai_configuraciones, pantalla, nave, aliens, balas)
         # Actualizar la posición de cada alien
-        fj.update_aliens(ai_configuraciones, nave, aliens)
+        fj.update_aliens(ai_configuraciones, estadisticas, pantalla, nave, aliens, balas)
         fj.actualizar_pantalla(ai_configuraciones, pantalla, nave, aliens, balas)
 
 run_game() # Comienza el videojuego

@@ -1,4 +1,5 @@
 import sys
+from time import sleep
 import pygame
 from bala import Bala
 from alien import Alien
@@ -129,7 +130,23 @@ def change_fleet_direction(ai_configuraciones, aliens):
         alien.rect.y += ai_configuraciones.fleet_drop_speed
         ai_configuraciones.fleet_direction *= -1
 
-def update_aliens(ai_configuraciones, nave, aliens):
+def nave_golpeada(ai_configuraciones, estadisticas, pantalla, nave, aliens, balas):
+    """Responde a una nave siendo golpeada por un alien"""
+    # Disminuye naves_restantes
+    estadisticas.naves_restantes -= 1
+    
+    # Vacía la lista de aliens y balas
+    aliens.empty()
+    balas.empty()
+    
+    # Crea una nueva flota y centra la nave
+    crear_flota(ai_configuraciones, pantalla, nave, aliens)
+    nave.centrar_nave()
+    
+    # Pausa
+    sleep(0.5)
+
+def update_aliens(ai_configuraciones, estadisticas, pantalla, nave, aliens, balas):
     """Comprueba si la flota está al borde
     y luego actualiza las posiciones de todos los aliens de la flota"""
     check_fleet_edges(ai_configuraciones, aliens)
@@ -137,4 +154,5 @@ def update_aliens(ai_configuraciones, nave, aliens):
     
     # Busca colisiones de alien-nave
     if pygame.sprite.spritecollideany(nave, aliens):
-        print("¡Nave golpeada!")
+        nave_golpeada(ai_configuraciones, estadisticas, pantalla, nave, aliens, balas)
+        
