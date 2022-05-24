@@ -129,8 +129,12 @@ def change_fleet_direction(ai_configuraciones, aliens):
         alien.rect.y += ai_configuraciones.fleet_drop_speed
         ai_configuraciones.fleet_direction *= -1
 
-def update_aliens(ai_configuraciones, aliens):
+def update_aliens(ai_configuraciones, nave, aliens):
     """Comprueba si la flota está al borde
     y luego actualiza las posiciones de todos los aliens de la flota"""
     check_fleet_edges(ai_configuraciones, aliens)
     aliens.update()
+    
+    # Busca colisiones de alien-nave
+    if pygame.sprite.spritecollideany(nave, aliens):
+        print("¡Nave golpeada!")

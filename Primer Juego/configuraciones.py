@@ -19,7 +19,7 @@ class Configuraciones(object):
         
         # Configuraciones de Alien
         self.alien_speed_factor = 0.2
-        self.fleet_drop_speed = 0.7
+        self.fleet_drop_speed = 100
         # fleet_direction, si es 1 representa a la derecha;
         # si es -1 representa a la derecha
         self.fleet_direction = 1
