@@ -145,6 +145,16 @@ def nave_golpeada(ai_configuraciones, estadisticas, pantalla, nave, aliens, bala
     
     # Pausa
     sleep(0.5)
+    
+def check_aliens_bottom(ai_configuraciones, estadisticas, pantalla, nave, aliens, balas):
+    """Comprueba si algún alien ha llegado al final de la pantalla"""
+    pantalla_rect = pantalla.get_rect()
+    
+    for alien in aliens.sprites():
+        if alien.rect.bottom >= pantalla_rect.bottom:
+            # Trata de la misma forma que si la nave fuera golpeada
+            nave_golpeada(ai_configuraciones, estadisticas, pantalla, nave, aliens, balas)
+            break        
 
 def update_aliens(ai_configuraciones, estadisticas, pantalla, nave, aliens, balas):
     """Comprueba si la flota está al borde
@@ -156,3 +166,5 @@ def update_aliens(ai_configuraciones, estadisticas, pantalla, nave, aliens, bala
     if pygame.sprite.spritecollideany(nave, aliens):
         nave_golpeada(ai_configuraciones, estadisticas, pantalla, nave, aliens, balas)
         
+    # Busca aliens que golpean la parte inferior de la pantalla
+    check_aliens_bottom(ai_configuraciones, estadisticas, pantalla, nave, aliens, balas)
