@@ -3,6 +3,7 @@ import pygame
 from pygame.sprite import Group
 from configuraciones import Configuraciones
 from estadisticas import Estadisticas
+from button import Button
 from nave import Nave
 import funciones_juego as fj
 
@@ -15,6 +16,10 @@ def run_game():
         (ai_configuraciones.screen_width, ai_configuraciones.screen_height))
     # Se digita el nombre del videojuego:
     pygame.display.set_caption("Invasión alienígena")
+    
+    # Crea el botón Play
+    play_button = Button(ai_configuraciones, pantalla, "Play")
+    
     
     # Crea una instancia para almacenar estadñisticas del videojuego
     estadisticas = Estadisticas(ai_configuraciones)
@@ -40,6 +45,6 @@ def run_game():
             # Actualizar la posición de cada alien
             fj.update_aliens(ai_configuraciones, estadisticas, pantalla, nave, aliens, balas)
         
-        fj.actualizar_pantalla(ai_configuraciones, pantalla, nave, aliens, balas)
+        fj.actualizar_pantalla(ai_configuraciones, pantalla, estadisticas, nave, aliens, balas, play_button)
 
 run_game() # Comienza el videojuego
