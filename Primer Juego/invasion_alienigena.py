@@ -33,10 +33,13 @@ def run_game():
     while True:
         # Escuchar eventos de teclado o de ratón
         fj.verificar_eventos(ai_configuraciones, pantalla, nave, balas)
-        nave.update() # La posición de la nave se actualiza en la pantalla usando las teclas
-        fj.update_balas(ai_configuraciones, pantalla, nave, aliens, balas)
-        # Actualizar la posición de cada alien
-        fj.update_aliens(ai_configuraciones, estadisticas, pantalla, nave, aliens, balas)
+        
+        if estadisticas.game_active:
+            nave.update() # La posición de la nave se actualiza en la pantalla usando las teclas
+            fj.update_balas(ai_configuraciones, pantalla, nave, aliens, balas)
+            # Actualizar la posición de cada alien
+            fj.update_aliens(ai_configuraciones, estadisticas, pantalla, nave, aliens, balas)
+        
         fj.actualizar_pantalla(ai_configuraciones, pantalla, nave, aliens, balas)
 
 run_game() # Comienza el videojuego
