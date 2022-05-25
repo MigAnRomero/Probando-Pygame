@@ -22,7 +22,7 @@ def verificar_eventos_keyup(event, nave):
     elif event.key == pygame.K_LEFT:
         nave.moving_left = False
             
-def verificar_eventos(ai_configuraciones, pantalla, nave, balas):
+def verificar_eventos(ai_configuraciones, pantalla, estadisticas, play_button, nave, balas):
     """Responde a las pulsaciones de teclas y los eventos del ratón"""
     # Escuchar eventos de teclado o de ratón
     # El bucle gestiona los eventos y código que actualiza la pantalla
@@ -36,6 +36,14 @@ def verificar_eventos(ai_configuraciones, pantalla, nave, balas):
         elif event.type == pygame.KEYUP:
             verificar_eventos_keyup(event, nave)
             
+        elif event.type == pygame.MOUSEBUTTONDOWN:
+            mouse_x, mouse_y = pygame.mouse.get_pos()
+            check_play_buttom(estadisticas, play_button, mouse_x, mouse_y)
+            
+def check_play_buttom(estadisticas, play_button, mouse_x, mouse_y):
+    """Comienza un nuevo juego cuando el jugador hace clic en Play"""
+    if play_button.rect.collidepoint(mouse_x, mouse_y):
+        estadisticas.game_active = True
 
 def actualizar_pantalla(ai_configuraciones, pantalla, estadisticas, nave, aliens, balas, play_button):
     """Actualiza las imágenes en la pantalla y pasa a la nueva pantalla"""
