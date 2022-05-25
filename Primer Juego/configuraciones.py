@@ -9,7 +9,7 @@ class Configuraciones(object):
         
         # Configuraciones de la nave
         self.factor_velocidad_nave = 1.5
-        self.cantidad_naves = 3
+        self.cantidad_naves = 3 # Cantidad de vidas para el jugador
         
         # Configuraciones de balas
         self.bala_factor_velocidad = 1
@@ -19,8 +19,8 @@ class Configuraciones(object):
         self.balas_allowed = 3
         
         # Configuraciones de Alien
-        self.alien_speed_factor = 0.2
-        self.fleet_drop_speed = 100
+        self.alien_speed_factor = 0.1
+        self.fleet_drop_speed = 8
         # fleet_direction, si es 1 representa a la derecha;
         # si es -1 representa a la derecha
         self.fleet_direction = 1
