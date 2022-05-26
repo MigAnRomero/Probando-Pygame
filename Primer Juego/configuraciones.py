@@ -3,8 +3,8 @@ class Configuraciones(object):
 
     def __init__(self):
         """Inicializa las configuraciones del juego"""
-        self.screen_width = 800
-        self.screen_height = 600
+        self.screen_width = 990
+        self.screen_height = 690
         self.bgcolor = (230, 230, 230)
         
         # Configuraciones de la nave
@@ -19,8 +19,8 @@ class Configuraciones(object):
         self.balas_allowed = 3
         
         # Configuraciones de Alien
-        self.alien_speed_factor = 0.1
-        self.fleet_drop_speed = 8
+        self.alien_speed_factor = 1
+        self.fleet_drop_speed = 10
         # fleet_direction, si es 1 representa a la derecha;
         # si es -1 representa a la derecha
         self.fleet_direction = 1
