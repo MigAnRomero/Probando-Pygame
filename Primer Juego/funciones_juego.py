@@ -22,7 +22,7 @@ def verificar_eventos_keyup(event, nave):
     elif event.key == pygame.K_LEFT:
         nave.moving_left = False
             
-def verificar_eventos(ai_configuraciones, pantalla, estadisticas, play_button, nave, balas):
+def verificar_eventos(ai_configuraciones, pantalla, estadisticas, play_button, nave, aliens, balas):
     """Responde a las pulsaciones de teclas y los eventos del ratón"""
     # Escuchar eventos de teclado o de ratón
     # El bucle gestiona los eventos y código que actualiza la pantalla
@@ -38,12 +38,22 @@ def verificar_eventos(ai_configuraciones, pantalla, estadisticas, play_button, n
             
         elif event.type == pygame.MOUSEBUTTONDOWN:
             mouse_x, mouse_y = pygame.mouse.get_pos()
-            check_play_buttom(estadisticas, play_button, mouse_x, mouse_y)
+            check_play_buttom(ai_configuraciones, pantalla, estadisticas, play_button, nave, aliens, balas, mouse_x, mouse_y)
             
-def check_play_buttom(estadisticas, play_button, mouse_x, mouse_y):
+def check_play_buttom(ai_configuraciones, pantalla, estadisticas, play_button, nave, aliens, balas, mouse_x, mouse_y):
     """Comienza un nuevo juego cuando el jugador hace clic en Play"""
     if play_button.rect.collidepoint(mouse_x, mouse_y):
-        estadisticas.game_active = True
+        # Restablecer las estadñisticas del videojuego
+        estadisticas.reset_stats() # El juegador tiene otras 3 nuevas naves
+        estadisticas.game_active = True # El VJ comienza otra vez, ya no está congelado la pantalla
+        
+        # Vacía la lista de aliens y balas
+        aliens.empty()
+        balas.empty()
+        
+        # Crea una nueva flota y centra la nave
+        crear_flota(ai_configuraciones, pantalla, nave, aliens)
+        nave.centrar_nave()
 
 def actualizar_pantalla(ai_configuraciones, pantalla, estadisticas, nave, aliens, balas, play_button):
     """Actualiza las imágenes en la pantalla y pasa a la nueva pantalla"""
