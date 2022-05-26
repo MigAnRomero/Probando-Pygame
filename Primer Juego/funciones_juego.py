@@ -42,7 +42,9 @@ def verificar_eventos(ai_configuraciones, pantalla, estadisticas, play_button, n
             
 def check_play_buttom(ai_configuraciones, pantalla, estadisticas, play_button, nave, aliens, balas, mouse_x, mouse_y):
     """Comienza un nuevo juego cuando el jugador hace clic en Play"""
-    if play_button.rect.collidepoint(mouse_x, mouse_y):
+    button_clicked = play_button.rect.collidepoint(mouse_x, mouse_y)
+    # Si game_active es falso, el VJ puede reiniciarse; si es verdadero, no dejará reiniciar el VJ
+    if button_clicked and not estadisticas.game_active:
         # Restablecer las estadñisticas del videojuego
         estadisticas.reset_stats() # El juegador tiene otras 3 nuevas naves
         estadisticas.game_active = True # El VJ comienza otra vez, ya no está congelado la pantalla
