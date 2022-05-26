@@ -45,6 +45,9 @@ def check_play_buttom(ai_configuraciones, pantalla, estadisticas, play_button, n
     button_clicked = play_button.rect.collidepoint(mouse_x, mouse_y)
     # Si game_active es falso, el VJ puede reiniciarse; si es verdadero, no dejará reiniciar el VJ
     if button_clicked and not estadisticas.game_active:
+        # Ocultar el cursor del ratón
+        pygame.mouse.set_visible(False)
+        
         # Restablecer las estadñisticas del videojuego
         estadisticas.reset_stats() # El juegador tiene otras 3 nuevas naves
         estadisticas.game_active = True # El VJ comienza otra vez, ya no está congelado la pantalla
@@ -173,6 +176,9 @@ def nave_golpeada(ai_configuraciones, estadisticas, pantalla, nave, aliens, bala
         
     else:
         estadisticas.game_active = False
+        # El Cursor del ratón es visible cuando el jugador pierde la partida
+        # y vea nuevamente el botón Play
+        pygame.mouse.set_visible(True)
     
 def check_aliens_bottom(ai_configuraciones, estadisticas, pantalla, nave, aliens, balas):
     """Comprueba si algún alien ha llegado al final de la pantalla"""
