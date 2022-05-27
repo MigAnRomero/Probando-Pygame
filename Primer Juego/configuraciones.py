@@ -20,6 +20,8 @@ class Configuraciones(object):
         self.fleet_drop_speed = 10
         # Qué tan rápido se acelera el VJ
         self.escala_aceleracion = 1.1
+        # Qué tan rápido aumentan los valores de puntos por aliens
+        self.escala_puntaje = 1.5
         
         self.inicializa_configuraciones_dinamicas()
         
@@ -31,9 +33,14 @@ class Configuraciones(object):
         # fleet_direction, si es 1 representa a la derecha;
         # si es -1 representa a la derecha
         self.fleet_direction = 1
+        # Puntuación
+        self.puntos_alien = 50
         
     def aumentar_velocidad(self):
-        """Aumenta la configuración de velocidad"""
+        """Aumenta la configuración de velocidad y los valores de puntos por aliens"""
         self.factor_velocidad_nave *= self.escala_aceleracion
         self.bala_factor_velocidad *= self.escala_aceleracion
         self.alien_speed_factor *= self.escala_aceleracion
+        
+        self.puntos_alien = int(self.puntos_alien * self.escala_puntaje)
+        print(self.puntos_alien)

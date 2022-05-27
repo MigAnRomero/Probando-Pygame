@@ -43,7 +43,8 @@ def run_game():
         
         if estadisticas.game_active:
             nave.update() # La posición de la nave se actualiza en la pantalla usando las teclas
-            fj.update_balas(ai_configuraciones, pantalla, nave, aliens, balas)
+            fj.update_balas(ai_configuraciones, pantalla, estadisticas, 
+                            marcador, nave, aliens, balas)
             # Actualizar la posición de cada alien
             fj.update_aliens(ai_configuraciones, estadisticas, pantalla, nave, aliens, balas)
         
