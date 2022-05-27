@@ -5,7 +5,7 @@ class Configuraciones(object):
         """Inicializa las configuraciones del juego"""
         self.screen_width = 990
         self.screen_height = 690
-        self.bgcolor = (230, 230, 230)
+        self.bg_color = (230, 230, 230)
         
         # Configuraciones de la nave
         self.cantidad_naves = 3 # Cantidad de vidas para el jugador

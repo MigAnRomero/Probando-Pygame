@@ -45,6 +45,9 @@ def check_play_buttom(ai_configuraciones, pantalla, estadisticas, play_button, n
     button_clicked = play_button.rect.collidepoint(mouse_x, mouse_y)
     # Si game_active es falso, el VJ puede reiniciarse; si es verdadero, no dejará reiniciar el VJ
     if button_clicked and not estadisticas.game_active:
+        # Restablece la configuración del VJ
+        ai_configuraciones.inicializa_configuraciones_dinamicas()
+       
         # Ocultar el cursor del ratón
         pygame.mouse.set_visible(False)
         
@@ -60,15 +63,19 @@ def check_play_buttom(ai_configuraciones, pantalla, estadisticas, play_button, n
         crear_flota(ai_configuraciones, pantalla, nave, aliens)
         nave.centrar_nave()
 
-def actualizar_pantalla(ai_configuraciones, pantalla, estadisticas, nave, aliens, balas, play_button):
+def actualizar_pantalla(ai_configuraciones, pantalla, estadisticas, 
+                        marcador, nave, aliens, balas, play_button):
     """Actualiza las imágenes en la pantalla y pasa a la nueva pantalla"""
     # Volver a dibujar la pantalla durante cada pasada por el bucle
-    pantalla.fill(ai_configuraciones.bgcolor)
+    pantalla.fill(ai_configuraciones.bg_color)
     # Vuelve a dibujar todas las balas detrás de la nave y de los extraterrestres
     for bala in balas.sprites():
         bala.draw_bala()
     nave.blitme()
     aliens.draw(pantalla)
+    
+    # Dibuja la información de la puntuación
+    marcador.muestra_puntaje()
     
     # Dibuja el botón de Play si el videojuego está inactivo
     if not estadisticas.game_active:
