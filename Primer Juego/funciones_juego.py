@@ -110,7 +110,8 @@ def check_bala_alien_collisions(ai_configuraciones, pantalla, estadisticas, marc
     if collisions:
         for aliens in collisions.values():
             estadisticas.puntaje += ai_configuraciones.puntos_alien * len(aliens)
-            marcador.prep_puntaje
+            marcador.prep_puntaje()
+        verificar_alto_puntaje(estadisticas, marcador)
     
     if len(aliens) == 0:
         # Destruye las balas existentes y crea una nueva flota
@@ -118,6 +119,12 @@ def check_bala_alien_collisions(ai_configuraciones, pantalla, estadisticas, marc
         ai_configuraciones.aumentar_velocidad()
         crear_flota(ai_configuraciones, pantalla, nave, aliens)
             
+def verificar_alto_puntaje(estadisticas, marcador):
+    """Verifica si existe un puntaje más alto"""
+    if estadisticas.puntaje > estadisticas.alto_puntaje:
+        estadisticas.alto_puntaje = estadisticas.puntaje
+        marcador.prep_alto_puntaje()
+
 def fuego_bala(ai_configuraciones, pantalla, nave, balas):
     """Dispara una bala si aún no ha alcanzado el límite"""
     # Crea una nueva bala y la agrega al grupo de balas
