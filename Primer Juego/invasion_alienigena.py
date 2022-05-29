@@ -47,7 +47,7 @@ def run_game():
             fj.update_balas(ai_configuraciones, pantalla, estadisticas, 
                             marcador, nave, aliens, balas)
             # Actualizar la posición de cada alien
-            fj.update_aliens(ai_configuraciones, estadisticas, pantalla, nave, aliens, balas)
+            fj.update_aliens(ai_configuraciones, estadisticas, pantalla, marcador, nave, aliens, balas)
         
         fj.actualizar_pantalla(ai_configuraciones, pantalla, estadisticas, 
                                marcador, nave, aliens, balas, play_button)
