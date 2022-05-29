@@ -22,7 +22,8 @@ def verificar_eventos_keyup(event, nave):
     elif event.key == pygame.K_LEFT:
         nave.moving_left = False
             
-def verificar_eventos(ai_configuraciones, pantalla, estadisticas, play_button, nave, aliens, balas):
+def verificar_eventos(ai_configuraciones, pantalla, estadisticas, marcador, 
+                      play_button, nave, aliens, balas):
     """Responde a las pulsaciones de teclas y los eventos del ratón"""
     # Escuchar eventos de teclado o de ratón
     # El bucle gestiona los eventos y código que actualiza la pantalla
@@ -38,9 +39,11 @@ def verificar_eventos(ai_configuraciones, pantalla, estadisticas, play_button, n
             
         elif event.type == pygame.MOUSEBUTTONDOWN:
             mouse_x, mouse_y = pygame.mouse.get_pos()
-            check_play_buttom(ai_configuraciones, pantalla, estadisticas, play_button, nave, aliens, balas, mouse_x, mouse_y)
+            check_play_buttom(ai_configuraciones, pantalla, estadisticas, marcador, 
+                              play_button, nave, aliens, balas, mouse_x, mouse_y)
             
-def check_play_buttom(ai_configuraciones, pantalla, estadisticas, play_button, nave, aliens, balas, mouse_x, mouse_y):
+def check_play_buttom(ai_configuraciones, pantalla, estadisticas, marcador, 
+                      play_button, nave, aliens, balas, mouse_x, mouse_y):
     """Comienza un nuevo juego cuando el jugador hace clic en Play"""
     button_clicked = play_button.rect.collidepoint(mouse_x, mouse_y)
     # Si game_active es falso, el VJ puede reiniciarse; si es verdadero, no dejará reiniciar el VJ
@@ -51,9 +54,14 @@ def check_play_buttom(ai_configuraciones, pantalla, estadisticas, play_button, n
         # Ocultar el cursor del ratón
         pygame.mouse.set_visible(False)
         
-        # Restablecer las estadñisticas del videojuego
+        # Restablecer las estadísticas del videojuego
         estadisticas.reset_stats() # El juegador tiene otras 3 nuevas naves
         estadisticas.game_active = True # El VJ comienza otra vez, ya no está congelado la pantalla
+        
+        # Restablece las imágenes de marcador
+        marcador.prep_puntaje()
+        marcador.prep_alto_puntaje()
+        marcador.prep_nivel
         
         # Vacía la lista de aliens y balas
         aliens.empty()
@@ -117,6 +125,12 @@ def check_bala_alien_collisions(ai_configuraciones, pantalla, estadisticas, marc
         # Destruye las balas existentes y crea una nueva flota
         balas.empty()
         ai_configuraciones.aumentar_velocidad()
+        
+        # Incrementa el nivel cuando toda la flota es destruida
+        estadisticas.nivel += 1
+        # Se llama prep_nivel para mostrar de forma correcta el nivel actual
+        marcador.prep_nivel()
+        
         crear_flota(ai_configuraciones, pantalla, nave, aliens)
             
 def verificar_alto_puntaje(estadisticas, marcador):

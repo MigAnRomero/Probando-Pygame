@@ -16,3 +16,5 @@ class Estadisticas():
         self.naves_restantes = self.ai_configuraciones.cantidad_naves
         # Puntaje inicial al comienzo de cada nueva partida
         self.puntaje = 0
+        # Nivel actual que se encuentra el jugador
+        self.nivel = 1
