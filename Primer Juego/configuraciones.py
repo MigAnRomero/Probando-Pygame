@@ -1,4 +1,4 @@
-class Configuraciones(object):
+class Configuraciones(object): # Voy a quitar "object" dentro del ()
     """Sirve para almacenar todas las congiguraciones de Invasión Alienígena"""
 
     def __init__(self):

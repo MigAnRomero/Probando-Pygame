@@ -1,7 +1,7 @@
 import pygame
 from pygame.sprite import Sprite
 
-class Nave():
+class Nave(Sprite):
     """Sirve para gestionar el comportamiento de la nave"""
 
     def __init__(self, ai_configuraciones, pantalla):
